@@ -52,11 +52,11 @@ export default function Guess() {
             setCheck(0);
             if ("vibrate" in navigator) {
                 // vibration API supported
-              navigator.vibrate(5000);
+              navigator.vibrate(2500);
             }
             setTimeout(() => {
                 setCheck(-1);
-            }, 10000);
+            }, 5000);
         }
         setLoading(false);
 
@@ -82,14 +82,18 @@ export default function Guess() {
     })
 
     console.log(bgImg());
-
+// style={{backgroundImage: `url(${bgImg()})`, backgroundPosition: 'center'}}
 
   return (
     <>  
         {
             !loading ?
           
-        <div className='guess-cont position-relative' style={{backgroundImage: `url(${bgImg()})`, backgroundPosition: 'center'}}>
+        <div className='guess-cont position-relative'>
+         
+        {
+            input.length >0 && check !=-1?<img src={bgImg()} alt='img' style={{position:'absolute', width:'100%'}}/> : ''
+        } 
         <div>
             <h1>
                 Guess the Pokemon&#160;
